@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="js/main.js"></script>
+    <script src="js/cartList.js"></script>
+    <script>
+        // 创建购物车
+        var cart = new ShoppingCart();
+        cart.clearCart();
+        // 创建商品
+        var product = new Product('01', '鼠标', '01.jpg', 9);
+
+        // 创建订单
+        var order = new Order(product, 10, true);
+        // var title = order.title;
+        // console.log(title);
+
+        // 购物车数据
+        // var cartData = new CartData();
+
+        // 将订单加入购物车数据
+        // cartData.orderList.push(order);
+        // cartData.totalQty = order.qty;
+        // cartData.totaAmount = order.qty * order.price;
+        // cartData.units = 1;
+        // console.log(cartData);
+
+
+        // 将购物车数据写入本地存储
+        // cart.setDataToLocalSatorge(cartData);
+        cart.addToCart(order);
+
+
+        // 第二个
+        product = new Product('02', '米饭', '02.jpg', 9);
+        order = new Order(product, 10, true);
+        cart.addToCart(order);
+        // 第三个
+        product = new Product('03', '剃须刀', '03.jpg', 9);
+        order = new Order(product, 10, true);
+
+        // 将新商品加入购物车（本地存储）
+        cart.addToCart(order);
+        console.log(cart.getSelectedQty());
+        console.log(cart.getSelectedAmount());
+
+
+        cart.setItemSelectStatus('03', true);
+        console.log(cart.getSelectedQty());
+        console.log(cart.getSelectedAmount());
+
+
+        cart.deleteItem('05');
+        // cart.changeQty('03','-');
+        // cart.changeQty('03','-');
+        // cart.changeQty('03','-');
+        // cart.changeQty('03','-');
+    </script>
+</body>
+
+</html>
